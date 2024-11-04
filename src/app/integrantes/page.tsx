@@ -9,7 +9,6 @@ function Participantes() {
                 <Link href="https://github.com/nicolasmeira5/Sprint4" target="_blank">
                     GitHub Repository
                 </Link>
-
                 <div className="member">
                     <Image src="/static/img/leo.jpeg" alt="Leo Mota" width={100} height={100} />
                     <div className="info">
