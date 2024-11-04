@@ -20,8 +20,10 @@ function Ajustes(){
 
 
         function handleLogout(){
-            localStorage.removeItem('token')
-            router.push('/login')
+            if (typeof window !== 'undefined'){
+                localStorage.removeItem('token')
+                router.push('/login')
+            }
         }
 
     return(
