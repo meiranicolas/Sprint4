@@ -1,0 +1,42 @@
+.participantes {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+ }
+ .containerPart {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+ }
+ 
+ .member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+ }
+ .member img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 20px;
+ }
+ .info {
+    text-align: left;
+ }
+ .name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+ }
+ .id, .class {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+ }
