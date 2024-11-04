@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 20px 60px;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+hr {
+    border: 1px solid #E6E6E6;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav img {
+    max-width: 200px;
+}
+
+.navItems {
+    display: flex;
+    justify-content: space-evenly;
+    width: 550px;
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.menu-button {
+    background-color: #009EE2;
+    color: white;
+    border: none;
+    padding: 13px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: none;
+    font-size: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    background-color: #f1f1f1;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    transform: translateX(100%);
+    border-radius: 8px;
+}
+
+.sidebar.open {
+    animation: slideIn 0.3s ease forwards;
+}
+
+.sidebar.close {
+    animation: slideOut 0.3s ease forwards;
+}
+
+@media (max-width: 900px) {
+    .nav img {
+        max-width: 130px;
+        height: 75px;
+    }
+
+    .menu-button {
+        display: block;
+        padding: 8px;
+        font-size: 15px;
+        width: 40px;
+    }
+
+    .navItems {
+        display: none;
+    }
+
+    .sidebar button {
+        background-color: #009EE2;
+        color: #E6E6E6;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        transition: all 0.6s;
+        font-size: 20px;
+        border: none;
+    }
+
+    .sidebar button:hover {
+        transition: all 0.6s;
+        scale: 1.10;
+    }
+
+    .sidebar.open {
+        background-color: #ffffff;
+        display: flex;
+        align-items: baseline;
+    }
+
+    .sidebar.open a {
+        font-size: 20px;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #5f5f5f;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 5px;
+        min-width: 100%;
+        transition: all 0.6s;
+    }
+
+    .sidebar.open a:hover {
+        transition: all 0.6s;
+        scale: 1.02;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+

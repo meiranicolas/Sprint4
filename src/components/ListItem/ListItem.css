@@ -1,0 +1,14 @@
+ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.Perguntas  {
+    color:#fff;
+    font-size: 15px;
+}
+.as{
+    margin-bottom: 10px;
+}
