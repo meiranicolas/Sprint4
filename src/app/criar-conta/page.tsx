@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import './style.css';
 
 function RegisterForm() {
+
+    
     const [email, setEmail] = useState('');
     const [confirmEmail, setConfirmEmail] = useState('');
     const [password, setPassword] = useState('');

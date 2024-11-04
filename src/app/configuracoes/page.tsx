@@ -4,6 +4,9 @@ import { useEffect } from 'react'
 import './style.css'
 import { useRouter } from 'next/navigation'
 function Ajustes(){
+
+    
+
     const router = useRouter()
 
     useEffect(() => {

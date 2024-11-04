@@ -9,6 +9,9 @@ import WatsonChat from '../../app/assistente/WatsonChat';
 import Layout from '@/app/layout/LayoutCar';
 
 const Header = () => {
+
+    
+
     const [isRightMenuOpen, setIsRightMenuOpen] = useState(false);
     const [isInitialLoad, setIsInitialLoad] = useState(true);
 

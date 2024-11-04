@@ -17,6 +17,8 @@ interface Mechanic {
 }
 
 const MapComponent: React.FC = () => {
+
+  
   const [mechanics, setMechanics] = useState<Mechanic[]>([]);
   const [map, setMap] = useState<any>(null);
 
