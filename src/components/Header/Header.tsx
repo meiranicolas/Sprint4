@@ -14,17 +14,18 @@ const Header = () => {
 
     const [isRightMenuOpen, setIsRightMenuOpen] = useState(false);
     const [isInitialLoad, setIsInitialLoad] = useState(true);
+    const [token, setToken] = useState<string | null>(null);
 
     const toggleRightMenu = () => {
         setIsRightMenuOpen(!isRightMenuOpen);
     };
     useEffect(() => {
         setIsInitialLoad(false);
+        if(typeof window !== undefined){
+            const storedToken = localStorage.getItem('token');
+            setToken(storedToken)
+        }
     }, []);
-    let token = null
-    if(typeof window !== undefined){
-        token = localStorage.getItem('token')
-    }
 
 
     useEffect(() => {
