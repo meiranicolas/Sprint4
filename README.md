@@ -2,10 +2,8 @@ Essa é a aplicação da PortoCheckCar, feita para facilitar o diagnóstico de v
 
 Integrantes: 
 
-Leo Mota
-
+Leo Mota, 
 Nicolas Meira e
-
 Gabriel Marcello 
 
 
