@@ -10,16 +10,14 @@ declare global {
   var google: any;
 }
 
-interface Mechanic {
+interface ChargingStation {
   name: string;
   position: { lat: number; lng: number };
   address: string;
 }
 
 const MapComponent: React.FC = () => {
-
-  
-  const [mechanics, setMechanics] = useState<Mechanic[]>([]);
+  const [chargingStations, setChargingStations] = useState<ChargingStation[]>([]);
   const [map, setMap] = useState<any>(null);
 
   function promptLocationPreference(
@@ -47,33 +45,33 @@ const MapComponent: React.FC = () => {
     }
   }
 
-  const searchNearbyMechanics = (map: any, location: { lat: number; lng: number }) => {
+  const searchNearbyChargingStations = (map: any, location: { lat: number; lng: number }) => {
     const service = new google.maps.places.PlacesService(map);
     const request = {
       location,
       radius: 5000,
-      keyword: 'car repair'
+      keyword: 'charging station' 
     };
 
     service.nearbySearch(request, (results: any, status: any) => {
       if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        const foundMechanics = results.map((place: any) => ({
+        const foundStations = results.map((place: any) => ({
           name: place.name,
           position: { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() },
           address: place.vicinity,
         }));
         
-        setMechanics(foundMechanics);
+        setChargingStations(foundStations);
 
-        foundMechanics.forEach((mechanic: Mechanic) => {
+        foundStations.forEach((station: ChargingStation) => {
           new google.maps.Marker({
             map,
-            position: mechanic.position,
-            title: mechanic.name,
+            position: station.position,
+            title: station.name,
           });
         });
       } else {
-        console.log("Nenhuma oficina encontrada nas proximidades.");
+        console.log("Nenhum eletroposto encontrado nas proximidades.");
       }
     });
   };
@@ -121,7 +119,7 @@ const MapComponent: React.FC = () => {
                   }
                 });
 
-                searchNearbyMechanics(newMap, userLocation);
+                searchNearbyChargingStations(newMap, userLocation);
               },
               (error) => {
                 console.error("Erro ao obter localização do usuário:", error);
@@ -139,9 +137,9 @@ const MapComponent: React.FC = () => {
     loadGoogleMapsScript();
   }, []);
 
-  const handleMechanicClick = (mechanic: Mechanic) => {
+  const handleStationClick = (station: ChargingStation) => {
     if (map) {
-      map.setCenter(mechanic.position);
+      map.setCenter(station.position);
       map.setZoom(15);
     }
   };
@@ -149,17 +147,17 @@ const MapComponent: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.sidebar}>
-        <h2>Oficinas Próximas</h2>
+        <h2>Eletropostos Próximos</h2>
         <ul className={styles.list}>
-          {mechanics.map((mechanic, index) => (
+          {chargingStations.map((station, index) => (
             <li
               key={index}
               className={styles.listItem}
-              onClick={() => handleMechanicClick(mechanic)}
+              onClick={() => handleStationClick(station)}
             >
-              <strong>{mechanic.name}</strong>
+              <strong>{station.name}</strong>
               <br />
-              {mechanic.address}
+              {station.address}
             </li>
           ))}
         </ul>

@@ -1,11 +1,24 @@
-.main-criarConta {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
 }
 
-.container {
+p{
+    color: #777;
+}
+
+.main-criarProjeto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #e0e0e0; 
+    padding: 20px;
+}
+
+.containerProjeto {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,8 +27,9 @@
     padding: 40px 200px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5); 
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5); 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    width: 80%;
     margin: 20px; 
 }
 
@@ -23,18 +37,21 @@ form {
     width: 100%;
 }
 
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
 .form-group {
     width: 100%;
     margin-bottom: 15px;
 }
 
-.form-group input {
+.form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+}
+
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -43,12 +60,13 @@ h1 {
     box-sizing: border-box;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
     border-color: #64a567;
     outline: none;
 }
 
-.btn-submit {
+button[type="submit"] {
     background-color: #64a567;
     color: white;
     border: none;
@@ -62,20 +80,44 @@ h1 {
     transition: background-color 0.3s ease;
 }
 
-.btn-submit:hover {
+button[type="submit"]:hover {
+    background-color: #4d7e4f;
+}
+
+#voltar-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#voltar {
+    display: inline-block;
+    background-color: #64a567;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#voltar:hover {
     background-color: #4d7e4f;
 }
 
 @media (max-width: 744px) {
-    .containerRegister {
+    .containerProjeto {
         padding: 20px;
     }
-    
+
     .form-group {
         width: 100%;
     }
 
-    .btn-submit {
+    button[type="submit"],
+    #voltar {
         width: 100%;
     }
 }

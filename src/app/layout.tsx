@@ -11,7 +11,7 @@ export default function Layout({
     return (
         <html lang='pt-BR'>
             <Head>
-                <link rel="icon" href="portocheckcar/public/static/img/asas.png" sizes="any" />
+                <link rel="icon" href="/public/static/logo.png" sizes="any" />
             </Head>
             <body>
                     <Header />

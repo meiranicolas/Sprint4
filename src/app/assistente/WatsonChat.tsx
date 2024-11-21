@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 declare global {
   interface Window {
@@ -6,32 +6,33 @@ declare global {
       integrationID: string;
       region: string;
       serviceInstanceID: string;
-      onLoad?: (instance: any) => Promise<void>;
       clientVersion?: string;
+      onLoad?: (instance: any) => Promise<void>;
     };
   }
 }
 
 const WatsonChat: React.FC = () => {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.watsonAssistantChatOptions = {
-        integrationID: "819c1705-2156-4040-90a6-cb83df3ae950",
-        region: "us-south",
-        serviceInstanceID: "760b8a6f-1b4c-4cb8-8edc-ef2608656713",
-        onLoad: async (instance) => {
-          await instance.render();
-        }
-      };
+    window.watsonAssistantChatOptions = {
+      integrationID: "7f3b8352-3fdb-483a-a020-1c3565bbaf4a",
+      region: "us-south",
+      serviceInstanceID: "ed9a0c7d-cdca-4d41-923b-a111408237fb",
+      onLoad: async (instance: any) => {
+        await instance.render();
+      },
+    };
 
-      setTimeout(() => {
-        const script = document.createElement('script');
-        script.src = `https://web-chat.global.assistant.watson.appdomain.cloud/versions/${
-          window.watsonAssistantChatOptions?.clientVersion || 'latest'
-        }/WatsonAssistantChatEntry.js`;
-        document.head.appendChild(script);
-      });
-    }
+    const script = document.createElement('script');
+    script.src =
+      "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+      (window.watsonAssistantChatOptions.clientVersion || 'latest') +
+      "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
   }, []);
 
   return null;

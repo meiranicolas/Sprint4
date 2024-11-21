@@ -1,0 +1,144 @@
+.main-meuProjeto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f4f8;
+    min-height: 80vh;
+    font-family: Arial, sans-serif;
+    margin-top: 80px; 
+    box-sizing: border-box;
+}
+
+.container-meuProjeto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.containerProjeto {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e6e6e6;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.containerProjeto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
+
+.content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+.content p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.buttons button {
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.buttons button:first-child {
+    background-color: #e63946;
+    color: #ffffff;
+    border: none;
+}
+
+.buttons button:first-child:hover {
+    background-color: #d62839;
+}
+
+.copyButton {
+    background-color: #64a567;
+    color: #ffffff;
+    border: none;
+}
+
+.copyButton:hover {
+    background-color: #579d5b;
+}
+
+.add {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.addButton {
+    background-color: #64a567;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.addButton:hover {
+    background-color: #579d5b;
+    transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+    .container-meuProjeto {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .addButton {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content h2 {
+        font-size: 1.2rem;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+    }
+
+    .buttons button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
