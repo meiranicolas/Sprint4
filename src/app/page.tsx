@@ -1,62 +1,105 @@
-"use client";
-import './index.css';
+'use client';
+
 import Image from 'next/image';
-import React from 'react';
+import { FC, useState, useEffect } from 'react';
+import './index.css';
 
+import quemSomosImage from '../../public/static/img/foia_branco.png';
 
+const words = ["RenovAqui", "Futuro", "Energia", "Transformação", "Progresso", "Energia", "Verde"];
 
-const Home: React.FC = () => {
-    
+const HomePage: FC = () => {
+    const [letterIndex, setLetterIndex] = useState(0);
+    const [wordIndex, setWordIndex] = useState(0);
+    const [writing, setWriting] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (writing) {
+                if (letterIndex < words[wordIndex].length) {
+                    setLetterIndex(letterIndex + 1);
+                } else {
+                    setWriting(false);
+                    setTimeout(() => setWriting(true), 2000);
+                }
+            } else {
+                if (letterIndex > 0) {
+                    setLetterIndex(letterIndex - 1);
+                } else {
+                    setWordIndex((wordIndex + 1) % words.length);
+                    setWriting(true);
+                }
+            }
+        }, writing ? 120 : 120);
+
+        return () => clearTimeout(timeout);
+    }, [letterIndex, wordIndex, writing]);
+
+    const scrollToAboutUs = () => {
+        const aboutUsSection = document.getElementById('about-us');
+        if (aboutUsSection) {
+            aboutUsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <>
-            <section className="banner">
-                <div className="content">
-                    <div className="title">
-                        <h1>Conheça o site que protege o seu carro!</h1>
+            <section id="home">
+                <h2 id="changing-text" aria-live="polite">
+                    {words[wordIndex].substring(0, letterIndex)}
+                </h2>
+                <div id="down-arrow" aria-label="Rolar para baixo" onClick={scrollToAboutUs} style={{ cursor: 'pointer' }}>
+                    ˅
+                </div>
+            </section>
+
+            <section id="about-us">
+                <div className="about-us-image">
+                    <Image src={quemSomosImage} alt="Imagem sobre quem somos" className="about-us-image" />
+                </div>
+                <div className="about-us-content">
+                    <h2 className="about-us-title">Quem Somos?</h2>
+                    <p className="about-us-description">
+                        Somos a RenovAqui, uma plataforma que conecta pessoas e comunidades a soluções de energia renovável e carregamento de veículos elétricos. Nossa missão é facilitar o acesso à energia limpa, promovendo um futuro mais sustentável e conectado por meio da inovação e colaboração.
+                    </p>
+                </div>
+            </section>
+
+            <section id="benefits">
+                <h2 id="benefits-title" className="benefits-title">Benefícios</h2>
+                <div className="benefits-container">
+                    <div className="benefit-item">
+                        <i className="bi bi-lightbulb"></i>
+                        <h3 className="benefit-title">Sustentabilidade ao Alcance de Todos</h3>
+                        <p className="benefit-description">
+                            O RenovAqui conecta pessoas e comunidades com soluções sustentáveis, oferecendo uma plataforma intuitiva para cadastrar e explorar projetos de energia limpa, promovendo um futuro mais verde e acessível para todos.
+                        </p>
                     </div>
-                    <div className="image">
-                        <Image src="/static/img/Porto-1.png" alt="Guincho" width={500} height={300} />
+                    <div className="benefit-item">
+                        <i className="bi bi-clock"></i>
+                        <h3 className="benefit-title">Cadastro de Projetos Sustentáveis</h3>
+                        <p className="benefit-description">
+                            Usuários podem compartilhar suas ideias e iniciativas em energia renovável, facilitando a colaboração e a busca por investidores, parceiros ou apoio técnico para transformar projetos em realidade.
+                        </p>
+                    </div>
+                    <div className="benefit-item">
+                        <i className="bi bi-shield-check"></i>
+                        <h3 className="benefit-title">Localização de Infraestrutura Sustentável Próxima</h3>
+                        <p className="benefit-description">
+                            Encontre rapidamente eletropostos e outras infraestruturas de energia renovável perto de você, utilizando um mapa interativo que torna mais simples planejar e adotar alternativas limpas.
+                        </p>
+                    </div>
+                    <div className="benefit-item">
+                        <i className="bi bi-bullseye"></i>
+                        <h3 className="benefit-title">Contribuição para um Futuro Sustentável</h3>
+                        <p className="benefit-description">
+                            Ao usar o RenovAqui, você colabora diretamente para a expansão da energia renovável, ajudando a reduzir a pegada de carbono, economizar recursos a longo prazo e promover impactos sociais e econômicos positivos em sua comunidade.
+                        </p>
                     </div>
                 </div>
             </section>
-            <div className="informacoes">
-                <div className="about">
-                    <div className="sub-title">
-                        <h2>Prático e rápido</h2>
-                    </div>
-                    <div className="text">
-                        <p>O Porto Check Car é ideal para você que busca praticidade e segurança no cuidado do seu carro. Com tecnologia avançada, ele faz um autodiagnóstico completo, identificando falhas mecânicas, elétricas ou estruturais, garantindo uma manutenção preventiva rápida e precisa.</p>
-                    </div>
-                </div>
-                <div className="about">
-                    <div className="sub-title">
-                        <h2>Qualidade e pontualidade</h2>
-                    </div>
-                    <div className="text">
-                        <p>Nossa rede de especialistas altamente capacitados garante o melhor atendimento e suporte técnico para você. Com precisão e eficiência, cuidamos do diagnóstico e reparo do seu carro, para que você tenha mais tempo para focar no que realmente importa. Confie na Porto Check Car para oferecer a manutenção com a qualidade e segurança que seu veículo merece.</p>
-                    </div>
-                </div>
-                <div className="about">
-                    <div className="sub-title">
-                        <h2>Nossos clientes</h2>
-                    </div>
-                    <div className="text">
-                        <p>Grandes empresas multinacionais confiam na Porto Check Car para garantir a segurança e eficiência de suas frotas. Combinando expertise e tecnologia de ponta, oferecemos soluções personalizadas e de alta qualidade. Nossa rede de especialistas mantém os veículos de nossos clientes em perfeito estado, reforçando nosso compromisso com excelência e resultados eficientes para negócios de todos os tamanhos.</p>
-                    </div>
-                </div>
-                <div className="about">
-                    <div className="sub-title">
-                        <h2>Serviços de conveniência</h2>
-                    </div>
-                    <div className="text">
-                        <p>Garantimos rapidez e qualidade na instalação dos seus bens, com total eficiência e atenção aos detalhes. Nossos especialistas realizam o serviço de forma ágil, sem comprometer a segurança. Com profissionais e equipamentos de ponta, asseguramos uma instalação correta e funcional. Confie na nossa expertise para um resultado impecável, sempre dentro do prazo.</p>
-                    </div>
-                    
-                </div>
-            </div>
         </>
     );
 };
 
-export default Home;
-
+export default HomePage;
